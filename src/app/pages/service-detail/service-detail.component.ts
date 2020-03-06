@@ -61,8 +61,6 @@ export class ServiceDetailComponent implements OnInit {
       }
     } catch (e) {}
 
-    console.log(this.state);
-
     this.dataProvinsi = this.dataProvinsiAll;
     this.state.addressed.provinsi = this.dataProvinsi[0].value;
 
@@ -169,7 +167,6 @@ export class ServiceDetailComponent implements OnInit {
   }
 
   goToCheckout() {
-    console.log(this.state);
     let state = JSON.stringify(this.state);
     this.cookieService.set('payload', state);
 
@@ -177,7 +174,6 @@ export class ServiceDetailComponent implements OnInit {
   }
 
   checkDisabled() {
-    console.log(this.state);
     if (!this.state.note || !this.state.customer.phoneNumber) return true;
     return false;
   }

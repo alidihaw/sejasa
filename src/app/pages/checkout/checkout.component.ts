@@ -38,8 +38,6 @@ export class CheckoutComponent implements OnInit {
     try {
       this.state = JSON.parse(payload)
     } catch (e) {}
-
-    console.log(this.state);
   }
 
   

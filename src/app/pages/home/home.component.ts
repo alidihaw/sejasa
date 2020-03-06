@@ -8,10 +8,10 @@ import { faFilePdf, faWallet, faCaretUp, faCaretDown, faLaptop, faTools, faClock
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  howWorks: any[];
-  services: any[];
-  whys: any[];
-  reviews: any[];
+  howWorks: any[] = [];
+  services: any[] = [];
+  whys: any[] = [];
+  reviews: any[] = [];
 
   activeSlide: number = 0;
 
