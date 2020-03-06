@@ -1,0 +1,131 @@
+<div class="header-app">
+    <div class='md:text-3xl all:text-xl color-primary'>Done</div>
+    <div class="title-header flex-initial text-center md:text-3xl all:text-xl font-semibold">Pesan Jasa Service AC</div>
+    <div>
+        <fa-icon [icon]="icon.sync" class="color-primary"></fa-icon>
+    </div>
+</div>
+
+<carousel>
+    <slide>
+        <img src="assets/img/bg.jpg" alt="first slide" class="carousel-img" style="display: block; width: 100%;">
+        <div class="carousel-caption">
+            <div class="title md:text-3xl all:text-xl">Pesan Teknisi AC Terpercaya untuk rumahmu!</div>
+        </div>
+        <div class="person">
+            <img src="assets/img/person.png">
+        </div>
+    </slide>
+</carousel>
+
+<div class="how-work text-center">
+    <div class="mt-6 mb-6 md:text-3xl all:text-xl font-semibold">Bagaimana Cara Kerjanya?</div>
+
+    <ng-container *ngIf="!flag.detailHowWork">
+        <div class="list-how-work flex">
+            <ng-container *ngFor="let item of howWorks">
+                <div class="col-md-4">
+                    <div class="no text-xs font-semibold">{{ item.no }}</div>
+                    <div class="icon">
+                        <fa-icon [icon]="item.icon" class="color-primary"></fa-icon>
+                    </div>
+                    <div class="title-how-work text-xs">{{ item.title }}</div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="more text-xs color-primary cursor-pointer mt-4" (click)="openHowWork()">Selengkapnya <fa-icon
+                [icon]="icon.down" class="color-primary"></fa-icon>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="flag.detailHowWork">
+        <div class="list-how-work">
+            <ng-container *ngFor="let item of howWorks">
+                <div class="col-md-12 flex items-center">
+                    <div class="no text-xs fomt-semibold mr-2 w-2">{{ item.no }}</div>
+                    <div class="icon mr-2 w-5">
+                        <fa-icon [icon]="item.icon" class="color-primary"></fa-icon>
+                    </div>
+                    <div class="title-how-work font-semibold text-xs">{{ item.title }}</div>
+                </div>
+                <div class="col-md-12 flex mb-4">
+                    <div class="desc text-left text-xs">{{ item.desc }}</div>
+                </div>
+            </ng-container>
+        </div>
+
+        <div class="more text-xs color-primary cursor-pointer mt-4" (click)="closeHowWork()">Tutup <fa-icon
+                [icon]="icon.up" class="color-primary"></fa-icon>
+        </div>
+    </ng-container>
+</div>
+
+<div class="service text-center">
+    <div class="mt-6 mb-6 md:text-3xl all:text-xl font-semibold">Layanan yang kami sediakan?</div>
+
+    <ng-container>
+        <div class="list-service flex">
+            <ng-container *ngFor="let item of services">
+                <div class="col-md-3">
+                    <div class="icon">
+                        <fa-icon [icon]="item.icon" class="icon-service color-primary" size="2x"></fa-icon>
+                    </div>
+                    <div class="title-how-work text-xs mt-2">{{ item.title }}</div>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>
+
+<div class="why text-center">
+    <div class="mt-6 mb-6 md:text-3xl all:text-xl font-semibold">Mengapa menggunakan jasa Service AC di Sejasa.com?
+    </div>
+
+    <ng-container>
+        <div class="list-why">
+            <ng-container *ngFor="let item of whys">
+                <div class="title-why text-xs mt-2">
+                    <fa-icon [icon]="icon.check" class="color-primary"></fa-icon> {{ item.title }}
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>
+
+<div class="why text-center mb-2">
+    <div class="mt-6 mb-2 md:text-3xl all:text-xl font-semibold">Review?</div>
+    <carousel [showIndicators]="false" [(activeSlide)]="activeSlide" class="custom">
+        <slide *ngFor="let review of reviews">
+            <div class="review-item">
+                <div class="item-why shadow-md">
+                    <div class="mb-2">
+                        <rating [(ngModel)]="review.rating" [max]="5" [readonly]="true" style="color: #e9c54b;">
+                        </rating>
+                    </div>
+                    <div class="text-xs">{{ review.review }}</div>
+                    <div class="text-xs font-semibold mt-2">{{ review.displayName }}</div>
+                </div>
+            </div>
+        </slide>
+        <div class="indicators pt-2">
+            <button *ngFor="let item of reviews; let i = index" type="button" class="indicator mr-1"
+                [class.active]="i === activeSlide" [attr.aria-pressed]="i === activeSlide" (click)="switchSlide(i)">
+                <fa-icon [icon]="icon.circle" class="color-gray" *ngIf="i === activeSlide"
+                    style="border-radius: 100%; background: #ddd;"></fa-icon>
+                <fa-icon [icon]="icon.circle" class="color-white" *ngIf="i != activeSlide"
+                    style="border-radius: 100%; background: #ddd;"></fa-icon>
+            </button>
+        </div>
+    </carousel>
+</div>
+
+<div class="footer-app items-center justify-between">
+    <div class='md:text-2xl all:text-xl color-primary'>
+        <fa-icon [icon]="icon.left" class="mr-1"></fa-icon> Kembali
+    </div>
+    <div class="footer-button">
+        <button type="button" class="btn btn-color-primary" [routerLink]="'/service'">
+            Selanjutnya
+        </button>
+    </div>
+</div>

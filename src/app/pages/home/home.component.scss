@@ -1,0 +1,109 @@
+.carousel-caption {
+    position: absolute;
+    width: 20%;
+    top: 35%;
+    left: 5%;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    z-index: 11;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    color: #fff;
+    text-align: left;
+}
+
+.custom {
+    .carousel-slide {
+        padding-bottom: 100px;
+    }
+}
+
+.indicators {
+    position: absolute;
+    bottom: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+.review-item {
+    padding: 20px 20px 40px 20px;
+    .item-why {
+        border: 1px solid #ccc;
+      
+        padding: 10px;
+        border-radius: 10px;
+    }
+}
+
+.bs-rating-star.active {
+    color: white !important;
+}
+
+.person {
+    position: absolute;
+    bottom: 40%;
+    right: 10%;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    img {
+        height: 200px;
+    }
+}
+
+.w-33 {
+    width: 33.33%;
+}
+
+.title {
+    color: white;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.6);
+}
+
+.desc {
+    padding-left: 44px;
+}
+
+.carousel-img {
+    height: 400px;
+}
+
+@media screen and (max-width: 640px) {
+    .carousel-caption {
+        position: absolute;
+        top: 35%;
+        left: 20px;
+        width: 50%;
+    }
+
+    .person {
+        right: 20px;
+        img {
+            height: 125px;
+        }
+    }
+
+    .carousel-img {
+        height: 250px;
+    }
+}
+
+.header-app {
+    display: flex;
+    padding: 10px 20px;
+    .title-header {
+        width: 100%;
+    }
+}
+
+.footer-app {
+    display: flex;
+    padding: 10px 20px;
+    border-top: 1px solid #ddd;
+    button {
+        min-width: 200px;
+    }
+}
