@@ -1,0 +1,94 @@
+<div class="bg-gray full">
+    <div class="header-app">
+        <div class="title-header flex-initial text-left md:text-3xl all:text-xl font-semibold">
+            <fa-icon [icon]="icon.left" class="mr-2 color-gray cursor-pointer" (click)="back()"></fa-icon>Detail Kontak
+            & Lokasi
+        </div>
+    </div>
+    <div class="container-app">
+        <div class="wrap-app shadow-md">
+            <div class="padding-app-title md:text-2xl all:text-xl font-semibold">Catatan <span class="required">*</span>
+            </div>
+            <div class="note-app padding-app">
+                <input type="text" [(ngModel)]="state.note" class="input-standard form-control text-xs mb-2"
+                    placeholder="Ketarangan tambahan pada jasa">
+            </div>
+        </div>
+        <div class="wrap-app shadow-md mt-3">
+            <div class="padding-app-title md:text-2xl all:text-xl font-semibold">Detail Kontak <span
+                    class="required">*</span></div>
+            <div class="padding-app text-sm">
+                <div class="user flex mb-2">
+                    <div style="width: 35px;">
+                        <fa-icon [icon]="icon.user" class="color-primary mr-2"></fa-icon>
+                    </div> {{ state.customer.displayName }}
+                </div>
+                <div class="email flex mb-2">
+                    <div style="width: 35px;">
+                        <fa-icon [icon]="icon.email" class="color-primary mr-2"></fa-icon>
+                    </div> {{ state.customer.email }}
+                </div>
+                <div class="phoneNumber flex items-center mb-2">
+                    <div style="width: 35px;">
+                        <fa-icon [icon]="icon.phone" class="color-primary mr-2"></fa-icon>
+                    </div>
+                    <input type="text" [(ngModel)]="state.customer.phoneNumber"
+                        class="input-standard form-control text-xs" placeholder="Masukan No Telp">
+                </div>
+                <div class="email flex items-center mb-2 item">
+                    <div style="width: 35px;" class="items-center">
+                        <label class="container-checkbox" style="margin-top: -15px;">
+                            <input [value]="state.email" name="group1" [(ngModel)]="state.email" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="items-center text-xs">
+                        Saya ingin mendapatkan email promosi dan informasi baru dari sejasa
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap-app shadow-md mt-3">
+            <div class="padding-app-title md:text-2xl all:text-xl font-semibold">Lokasi Service</div>
+            <div class="padding-app">
+                <div class="mb-2">
+                    <div class="text-xs">Provinsi</div>
+                    <select [(ngModel)]="state.addressed.provinsi" (ngModelChange)="onChangeProvinsi($event)"
+                        class="input-standard form-control text-xs">
+                        <option *ngFor="let item of dataProvinsi" [value]="item.value">{{ item.label }}</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <div class="text-xs">Kota / Kabupaten</div>
+                    <select [(ngModel)]="state.addressed.kota" (ngModelChange)="onChangeKota($event)"
+                        class="input-standard form-control text-xs">
+                        <option *ngFor="let item of dataKota" [value]="item.value">{{ item.label }}</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <div class="text-xs">Kecamatan / Kelurahan</div>
+                    <select [(ngModel)]="state.addressed.kecamatan" class="input-standard form-control text-xs">
+                        <option *ngFor="let item of dataKecamatan" [value]="item.value">{{ item.label }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright-app text-xs text-center text-gray mt-2">
+            Powered by Sejasa.com
+        </div>
+    </div>
+    <div class="footer-app items-center justify-between bg-white">
+        <div class="">
+            <div class="text-sm">Estimasi Harga</div>
+            <div class="text-sm font-semibold">Rp {{ state.payload?.total | number: '1.0-0' }}</div>
+            <div class="text-xs color-gray text-italic" style="font-style: italic;">Min Biaya per kedatangan Rp
+                {{ '75000' | number: '1.0-0' }}</div>
+        </div>
+        <div class="footer-button">
+            <button type="button" class="btn btn-color-primary" [disabled]="checkDisabled()" (click)="goToCheckout()">
+                Selanjutnya
+            </button>
+        </div>
+    </div>
+</div>

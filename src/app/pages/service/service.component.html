@@ -1,0 +1,129 @@
+<div class="bg-gray full">
+    <div class="header-app">
+        <div class="title-header flex-initial text-left md:text-3xl all:text-xl font-semibold">
+            <fa-icon [icon]="icon.left" class="mr-2 color-gray cursor-pointer" (click)="back()"></fa-icon>Service AC
+        </div>
+    </div>
+    <div class="container-app">
+        <div class="wrap-app shadow-md">
+            <div class="padding-app md:text-2xl all:text-xl font-semibold">Keluhan / Masalah AC <span
+                    class="required">*</span></div>
+            <div class="list-problem mt-1">
+                <fieldset id="group1">
+                    <div *ngFor="let problem of problems" class="wrap-border padding-app">
+                        <label class="container-checkbox"> <span class="text-sm">{{ problem.name }}</span>
+                            <input [value]="problem.checked" name="group1" [(ngModel)]="problem.checked"
+                                type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="wrap-app shadow-md mt-3">
+            <div class="padding-app md:text-2xl all:text-xl font-semibold">Layanan yang anda butuhkan <span
+                    class="required">*</span></div>
+            <div class="list-service">
+                <div class="item-service padding-app wrap-border" *ngFor="let item of services">
+                    <div class="image mr-2">
+                        <img [src]="item.photo">
+                    </div>
+                    <div class="content">
+                        <div class="text-sm font-semibold">{{ item.name }}</div>
+                        <div class="text-xs color-gray">{{ item.desc }}</div>
+                        <div class="text-xs font-semibold justify-between flex items-center mt-2">
+                            <div>Rp {{ item.value | number: '1.0-0' }}</div>
+                            <div class="text-xl items-center flex"><fa-icon [icon]="icon.minus" class="mr-2 color-gray-400 cursor-pointer" (click)="minusService(item)"></fa-icon> <div class="text-xs">{{ item.count }}</div> <fa-icon [icon]="icon.plus" class="ml-2 color-primary cursor-pointer" (click)="plusService(item)"></fa-icon></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-service">
+                    <div class="color-primary font-semibold">Lihat daftar harga service AC</div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap-app shadow-md mt-3">
+            <div class="padding-app md:text-2xl all:text-xl font-semibold">Layanan tambahan (optional)</div>
+            <div class="padding-app"><div class="blockquote-app text-sm color-gray-400">Anda boleh menambahkan layanan ini sekarang atau nanti saat kunjungan</div></div>
+            <div class="list-service">
+                <div class="item-service padding-app wrap-border">
+                    <div class="image mr-2">
+                        <img [src]="'assets/img/bg.jpg'">
+                    </div>
+                    <div class="content">
+                        <div class="text-sm font-semibold">Tambah/Isi Freon</div>
+                        <div class="mt-2">
+                            <button type="button" class="btn-optional-service btn-color-primary" [routerLink]="'/service'">
+                                Selengkapnya <fa-icon [icon]="icon.down" class="mr-2 color-primary"></fa-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-service">
+                    <div class="color-primary font-semibold">Lihat daftar harga service AC</div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap-app shadow-md mt-3">
+            <div class="padding-app-title md:text-2xl all:text-xl font-semibold">Jenis Property Anda <span
+                    class="required">*</span></div>
+            <div class="list-property flex padding-app">
+                <div class="item-service flex-1 flex-shrink mx-1" *ngFor="let property of propertys" (click)="changeProperty(property)">
+                    <div class="button-group-app">
+                        <div class="button-item-app text-center text-3xl" [class.selected-icon-property]="property.selected"><fa-icon [icon]="property.icon" class="color-primary" [class.color-white]="property.selected"></fa-icon></div>
+                        <div class="text-center text-xs" [class.selected-property]="property.selected">{{ property.name }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap-app shadow-md mt-3">
+            <div class="padding-app-title md:text-2xl all:text-xl font-semibold">Apakah penyedia jasa perlu membawa Tangga? <span
+                    class="required">*</span></div>
+            <div class="list-property flex padding-app">
+                <div class="item-service flex-1 flex-shrink mx-1" *ngFor="let stair of stairs" (click)="changeStairs(stair)">
+                    <div class="button-group-app">
+                        <div class="text-center button-item-app-text text-xs" [class.selected-property-text]="stair.selected">{{ stair.name }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap-app shadow-md mt-3">
+            <div class="padding-app-title md:text-2xl all:text-xl font-semibold">Kapan anda membutuhkan layanan? <span
+                    class="required">*</span></div>
+            <div class="list-property flex padding-app">
+                <div class="item-service flex-1 flex-shrink mx-1" *ngFor="let date of dates" (click)="changeDates(date)">
+                    <div class="button-group-app">
+                        <div class="text-center button-item-app-text text-xs" [class.selected-property-text]="date.selected">{{ date.name }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap-app shadow-md mt-3">
+            <div class="padding-app-title md:text-2xl all:text-xl font-semibold">Pukul berapa anda membutukan layanan? <span
+                    class="required">*</span></div>
+            <div class="list-property flex padding-app">
+                <div class="item-service flex-1 flex-shrink mx-1" *ngFor="let time of times" (click)="changeTimes(time)">
+                    <div class="button-group-app">
+                        <div class="text-center button-item-app-text text-xs" [class.selected-property-text]="time.selected">{{ time.name }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-app text-xs text-center text-gray mt-2">
+            Powered by Sejasa.com
+        </div>
+    </div>
+</div>
+
+<div class="footer-app items-center justify-between">
+    <div class="">
+        <div class="text-sm">Estimasi Harga</div>
+        <div class="text-sm font-semibold">Rp {{ state.total | number: '1.0-0' }}</div>
+        <div class="text-xs color-gray text-italic" style="font-style: italic;">Min Biaya per kedatangan Rp {{ '75000' | number: '1.0-0' }}</div>
+    </div>
+    <div class="footer-button">
+        <button type="button" class="btn btn-color-primary" [disabled]="checkDisabled()" (click)="goToServiceDetail()">
+            Selanjutnya
+        </button>
+    </div>
+</div>

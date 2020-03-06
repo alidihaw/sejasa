@@ -1,0 +1,108 @@
+<div class="bg-gray full">
+    <div class="header-app">
+        <div class="title-header flex-initial text-left md:text-3xl all:text-xl font-semibold">
+            <fa-icon [icon]="icon.left" class="mr-2 color-gray cursor-pointer" (click)="back()"></fa-icon>Konfirmasi Pemesanan
+        </div>
+    </div>
+    <div class="container-app">
+        <div class="wrap-app shadow-md">
+            <div class="padding-app-title justify-between flex items-center">
+                <div class="text-sm font-semibold ">Jadwal Service & Detail Kontak</div>
+                <div class="">
+                    <button type="button" class="btn btn-outline-color-primary text-xs">
+                        Ubah
+                    </button>
+                </div>
+            </div>
+            <div class="padding-app text-sm">
+                <div class="user flex">
+                    <div style="width: 30px;" class="color-primary">
+                        <fa-icon [icon]="icon.calendar" class="color-primary mr-2"></fa-icon>
+                    </div> 
+                    <div>
+                        <span class="color-primary font-semibold">{{ state.payload.date.value | date: 'EEEE' }}, {{ state.payload.date.value | date: 'dd MMM yyyy' }}</span>
+                        <br>
+                        <span class="text-xs">{{ state.payload.time.name }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="padding-app text-sm border-top">
+                <div class="user flex mb-2">
+                    <div style="width: 30px;"><fa-icon [icon]="icon.user" class="color-primary mr-2"></fa-icon></div> {{ state.customer.displayName }}
+                </div>
+                <div class="email flex mb-2">
+                    <div style="width: 30px;"><fa-icon [icon]="icon.email" class="color-primary mr-2"></fa-icon></div> {{ state.customer.email }}
+                </div>
+                <div class="phoneNumber flex mb-2">
+                    <div style="width: 30px;"><fa-icon [icon]="icon.phone" class="color-primary mr-2"></fa-icon></div> {{ state.customer.phoneNumber }}
+                </div>
+                <div class="location flex mb-2">
+                    <div style="width: 30px;"><fa-icon [icon]="icon.address" class="color-primary mr-2"></fa-icon></div> {{ state.addressed.kecamatan }}, {{ state.addressed.kota }}, {{ state.addressed.provinsi }}
+                </div>
+            </div>
+        </div>
+        <div class="wrap-app shadow-md mt-3">
+            <div class="padding-app justify-between flex items-center">
+                <div class="text-sm font-semibold ">Detail Layanan</div>
+                <div class="">
+                    <button type="button" class="btn btn-outline-color-primary text-xs">
+                        Ubah
+                    </button>
+                </div>
+            </div>
+            <div class="padding-app border-top">
+                <div *ngFor="let item of state.payload.service" class="flex justify-between items-center font-light mt-1 mb-1">
+                    <div class="text-xs">
+                        {{ item.name }}
+                        <div class="text-italic">{{ item.count }}x</div>
+                    </div>
+                    <div class="text-xs">
+                        Rp {{ (item.value * item.count)| number: '1.0-0' }}
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray footer-app-content flex justify-between items-center">
+                <div class="text-xs">
+                    <div class="text-xs font-semibold">Sub Total</div>
+                    <div class="text-italic">Min Transaksi Rp {{ '75000' | number: '1.0-0' }}</div>
+                </div>
+                <div class="text-xs font-semibold">
+                    Rp {{ state.payload.total| number: '1.0-0' }}
+                </div>
+            </div>
+        </div>
+        <div class="wrap-app shadow-md mt-3">
+            <div class="padding-app justify-between flex items-center">
+                <div class="text-sm font-semibold color-primary">Kode Promo</div>
+            </div>
+        </div>
+        <div class="wrap-app shadow-md mt-3">
+            <div class="padding-app-title justify-between flex items-center">
+                <div class="text-sm font-semibold">Catatan</div>
+            </div>
+            <div class="padding-app text-xs">
+                {{ state.note? state.note: 'Tidak ada catatan' }}
+            </div>
+        </div>
+        <div class="wrap-app shadow-md mt-3">
+            <div class="padding-app text-xs text-gray text-justify">
+                Dengan menekan tombol Pesan & Lanjut ke Pembayaran Anda setuju dengan <span class="color-primary">Syarat dan ketentuan.</span> Pembatalan 3 jam sebelum jadwal kunjungan dapat dikenakan biaya admin Rp 25.000
+            </div>
+        </div>
+       
+        <div class="copyright-app text-xs text-center text-gray mt-2">
+            Powered by Sejasa.com
+        </div>
+    </div>
+    <div class="footer-app bg-white">
+        <div class="flex items-center justify-between">
+            <div class="text-sm">Estimasi Harga</div>
+            <div class="text-sm font-semibold">Rp {{ state.payload?.total | number: '1.0-0' }}</div>
+        </div>
+        <div class="footer-button mt-2">
+            <button type="button" class="btn btn-color-primary text-xs" style="width: 100%" (click)="goToHome()">
+                Pesan & Lanjut ke Pembayaran
+            </button>
+        </div>
+    </div>
+</div>

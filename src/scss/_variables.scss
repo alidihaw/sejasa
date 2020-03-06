@@ -1,0 +1,66 @@
+fa-icon.color-primary {
+    svg {
+        path {
+            fill: #4aa96f;
+        }
+    }
+}
+fa-icon.color-white {
+    svg {
+        stroke: #DDD;
+        path {
+            fill: #FFFFFF;
+        }
+    }
+}
+fa-icon.color-gray {
+    svg {
+        path {
+            fill: #DDD;
+        }
+    }
+}
+
+.color-primary {
+    color: #4aa96f;
+}
+
+.btn-outline-color-primary {
+    background: white;
+    color: #4aa96f;
+    border: 1px solid #4aa96f;
+}
+
+.btn-color-primary {
+    background: #4aa96f;
+    color: white;
+}
+
+.btn-color-primary:hover {
+    background: #307e4e;
+    color: white;
+}
+
+.bg-gray {
+    background: #EEE;
+}
+
+.color-gray-400 {
+    color: rgb(33, 33, 33);
+}
+
+.color-gray {
+    color: rgb(171, 169, 169);
+}
+
+fa-icon.color-gray-400 {
+    svg {
+        path {
+            fill:  rgb(177, 177, 177);
+        }
+    }
+}
+
+.required {
+    color: rgb(181, 0, 0);
+}
